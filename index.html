@@ -1,0 +1,1711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rithika Ågren - UX Designer Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --white: #FFFFFF;
+            --dark-grey: #393939;
+            --orange: #F0961E;
+            --light-grey: #F5F5F5;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark-grey);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* Language Toggle */
+        .language-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+            background: var(--white);
+            padding: 8px 16px;
+            border-radius: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--dark-grey);
+            cursor: pointer;
+            padding: 5px 12px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            background: var(--orange);
+            color: var(--white);
+        }
+
+        .lang-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Download Button */
+        .download-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            background: var(--orange);
+            color: var(--white);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(240, 150, 30, 0.4);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(240, 150, 30, 0.6);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 40px;
+            background: linear-gradient(135deg, var(--white) 0%, var(--light-grey) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: var(--orange);
+            opacity: 0.1;
+            border-radius: 50%;
+            top: -200px;
+            right: -200px;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); transform: scale(0.7);}
+            50% { transform: translateY(-30px); }
+        }
+
+        .hero-bg-circle::before{
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: var(--orange);
+            opacity: 0.1;
+            border-radius: 50%;
+            bottom: -200px;
+            left: -200px;
+            animation: float2 10s ease-in-out infinite;
+        }
+
+        @keyframes float2 {
+            0%, 100% { transform: translateY(0px); transform: scale(1.1);}
+            50% { transform: translateY(30px); transform: scale(0.8); }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--dark-grey);
+            line-height: 1.2;
+        }
+
+        .hero-text h1 .highlight {
+            color: var(--orange);
+        }
+
+        .hero-text .subtitle {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--orange);
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--dark-grey);
+            margin-bottom: 30px;
+        }
+
+        .hero-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-pic {
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            border: 8px solid var(--orange);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            animation: scaleIn 1s ease 0.3s backwards;
+            background-color: #f4f4f4;
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Process Section - Redesigned */
+        .process-section {
+            padding: 100px 40px;
+            background: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: var(--dark-grey);
+        }
+
+        .section-title .accent {
+            color: var(--orange);
+        }
+
+        .process-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .process-intro {
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto 80px;
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--dark-grey);
+        }
+
+        .process-flow {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 0;
+            margin-bottom: 60px;
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .process-phase-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            max-width: 280px;
+        }
+
+        .flow-arrow {
+            position: absolute;
+            top: 80px;
+            right: -60px;
+            width: 120px;
+            height: 40px;
+            z-index: 0;
+        }
+
+        .flow-arrow svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .process-phase-wrapper:last-child .flow-arrow {
+            display: none;
+        }
+
+        .process-phase {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            width: 100%;
+        }
+
+        .phase-icon-wrapper {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 20px;
+            background: var(--dark-grey);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            position: relative;
+        }
+
+        .phase-icon-wrapper::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 3px solid var(--orange);
+            opacity: 0;
+            transform: scale(1.1);
+            transition: all 0.3s ease;
+        }
+
+        .process-phase:hover .phase-icon-wrapper {
+            background: var(--orange);
+            transform: scale(1.01);
+            box-shadow: 0 12px 30px rgba(240, 150, 30, 0.4);
+        }
+
+        .process-phase:hover .phase-icon-wrapper::before {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+
+        .phase-icon-wrapper img {
+            width: 80px;
+            height: 80px;
+        }
+
+        .phase-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--dark-grey);
+            margin-bottom: 15px;
+        }
+
+        .phase-subtitle {
+            font-size: 14px;
+            color: var(--dark-grey);
+            line-height: 1.6;
+            opacity: 0.8;
+            max-width: 250px;
+            margin: 0 auto;
+        }
+
+        /* Modal Dialog */
+        .method-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .method-modal.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: var(--white);
+            border-radius: 20px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 85vh;
+            /* overflow-y: auto; */
+            overflow: hidden;
+            position: relative;
+            animation: slideUp 0.4s ease;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-scroll{
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            flex: 1 1 auto;
+            scrollbar-gutter: stable both-edges;
+            padding: 1rem;
+        }
+
+        .modal-scroll::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .modal-scroll::-webkit-scrollbar-thumb {
+            background: var(--orange);
+            border-radius: 4px;
+            cursor: grabbing;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            padding: 40px 40px 30px;
+            border-bottom: 2px solid var(--light-grey);
+            display: flex;
+            flex: 0 0 auto;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .modal-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .modal-icon img {
+            width: 40px;
+            height: 40px;
+            filter: brightness(0) invert(1);
+        }
+
+        .modal-title-group h3 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dark-grey);
+            margin-bottom: 10px;
+        }
+
+        .modal-title-group p {
+            font-size: 15px;
+            color: var(--dark-grey);
+            opacity: 0.7;
+            line-height: 1.6;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--light-grey);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 24px;
+            color: var(--dark-grey);
+        }
+
+        .modal-close:hover {
+            background: var(--orange);
+            color: var(--white);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 40px;
+        }
+
+        .method-item {
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--light-grey);
+        }
+
+        .method-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .method-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--orange);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .method-name::before {
+            content: '●';
+            font-size: 12px;
+        }
+
+        .method-description {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--dark-grey);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .process-flow {
+                flex-wrap: wrap;
+                gap: 60px 40px;
+            }
+
+            .process-phase-wrapper {
+                flex: 0 0 calc(33.333% - 30px);
+            }
+
+            .flow-arrow {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .process-flow {
+                flex-direction: column;
+                align-items: center;
+                gap: 50px;
+            }
+
+            .process-phase-wrapper {
+                max-width: 300px;
+                flex: 1;
+            }
+
+            .phase-icon-wrapper {
+                width: 150px;
+                height: 150px;
+            }
+
+            .phase-icon-wrapper img {
+                width: 70px;
+                height: 70px;
+            }
+
+            .modal-content {
+                max-height: 90vh;
+            }
+
+            .modal-header {
+                padding: 30px 20px 20px;
+            }
+
+            .modal-body {
+                padding: 30px 20px;
+            }
+
+            .modal-icon {
+                width: 60px;
+                height: 60px;
+            }
+
+            .modal-icon img {
+                width: 30px;
+                height: 30px;
+            }
+
+            .modal-title-group h3 {
+                font-size: 22px;
+            }
+        }
+
+        /* Projects Section */
+        .projects-section {
+            padding: 100px 40px;
+            background: var(--light-grey);
+        }
+
+        .projects-scroll-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            overflow: visible;
+            padding: 20px 0;
+            /* scrollbar-width: thin;
+            scrollbar-color: var(--orange) var(--light-grey); */
+        }
+
+        /* .projects-scroll-container::-webkit-scrollbar {
+            height: 8px;
+        } */
+
+        /* .projects-scroll-container::-webkit-scrollbar-track {
+            background: var(--light-grey);
+        } */
+
+        /* .projects-scroll-container::-webkit-scrollbar-thumb {
+            background: var(--orange);
+            border-radius: 4px;
+        } */
+
+        .projects-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            padding: 20px;
+            overflow: visible;
+            /* background-color: #FFFFFF; */
+        }
+
+        .project-card {
+            min-width: 450px;
+            max-width: 650px;
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            cursor: default;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 300px;
+            background: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            border-bottom: var(--light-grey) 8px solid;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.4s ease;
+            padding: 20px;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            padding: 30px;
+        }
+
+        .project-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-grey);
+            margin-bottom: 10px;
+        }
+
+        .project-subtitle {
+            font-size: 14px;
+            color: var(--orange);
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .project-description {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--dark-grey);
+            margin-bottom: 20px;
+        }
+
+        .project-highlights {
+            margin-top: 20px;
+        }
+
+        .highlight-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--orange);
+            margin-bottom: 10px;
+        }
+
+        .highlight-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .highlight-tag {
+            font-size: 12px;
+            padding: 5px 12px;
+            background: var(--light-grey);
+            border-radius: 15px;
+            color: var(--dark-grey);
+        }
+
+        /* Skills Section */
+        .skills-section {
+            padding: 100px 40px;
+            background: var(--white);
+        }
+
+        .skills-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            cursor: default;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-category {
+            padding: 30px;
+            background: var(--light-grey);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(173, 109, 25, 0.2);
+        }
+
+        .skill-category h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--orange);
+            margin-bottom: 20px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            font-size: 13px;
+            padding: 8px 16px;
+            background: var(--white);
+            border-radius: 20px;
+            color: var(--dark-grey);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            border-color: var(--orange);
+            color: var(--orange);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 100px 40px;
+            background: var(--dark-grey);
+            color: var(--white);
+            text-align: center;
+            cursor: default;
+        }
+
+        .contact-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 18px;
+        }
+
+        .contact-item a {
+            color: var(--orange);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--white);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 36px;
+            }
+
+            .profile-pic {
+                width: 300px;
+                height: 300px;
+            }
+
+            .process-wheel {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .process-arrow {
+                display: none;
+            }
+
+            .phase-icon {
+                width: 120px;
+                height: 120px;
+            }
+
+            .phase-title {
+                font-size: 18px;
+                min-height: auto;
+            }
+
+            .process-phase:hover::after {
+                position: static;
+                transform: none;
+                display: block;
+                margin-top: 10px;
+            }
+
+            .projects-grid {
+                flex-direction: column;
+            }
+
+            .project-card {
+                min-width: 100%;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .language-toggle {
+                top: 10px;
+                right: 10px;
+            }
+
+            .download-btn {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 24px;
+            }
+        }
+
+        /* Hidden class for language toggle */
+        .hidden {
+            display: none;
+        }
+
+        /* Loading Animation */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--light-grey);
+            border-top-color: var(--orange);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Lightbox Modal for Project Images */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+            font-weight: 300;
+            transition: transform 0.2s ease;
+        }
+
+        .lightbox-close:hover {
+            transform: scale(1.2);
+        }
+
+        .project-image {
+            cursor: zoom-in;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading" id="loading">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Language Toggle -->
+    <div class="language-toggle">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="sv">SV</button>
+    </div>
+
+    <!-- Download Button -->
+    <button class="download-btn" onclick="downloadPDF()">
+        <span>📥</span>
+        <span data-en="Download Portfolio" data-sv="Ladda ner portfolio">Download Portfolio</span>
+    </button>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg-circle"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <p class="subtitle" data-en="UX Designer" data-sv="UX-designer">UX Designer</p>
+                <h1>
+                    <span data-en="Hi! I'm" data-sv="Hej! Jag heter">Hi! I'm</span> 
+                    <span class="highlight">Rithika</span>
+                </h1>
+                <p data-en="A UX designer with a creative eye and technical understanding. With a background in both computer science and interaction design, I create user experiences with the whole picture in mind – from smart code logic to beautiful interfaces. I love making the complex simple, and designing solutions that delight both users and developers."
+                   data-sv="En UX-designer med både ett kreativt öga och teknisk förståelse. Med en bakgrund både i datateknik och interaktionsdesign skapar jag användarupplevelser med hela bilden i åtanke – från smart kodlogik till snygga gränssnitt. Jag älskar att göra det komplexa enkelt, och designar lösningar som både användare och utvecklare blir glada av.">
+                    A UX designer with a creative eye and technical understanding. With a background in both computer science and interaction design, I create user experiences with the whole picture in mind – from smart code logic to beautiful interfaces. I love making the complex simple, and designing solutions that delight both users and developers.
+                </p>
+            </div>
+            <div class="hero-image">
+                <img src="uploads/Profile_picture.svg" alt="Rithika Ågren" class="profile-pic">
+            </div>
+        </div>
+    </section>
+
+    <!-- Design Thinking Process Section -->
+    <section class="process-section">
+        <h2 class="section-title">
+            <span data-en="My Design" data-sv="Min design">My Design</span> 
+            <span class="accent" data-en="Process" data-sv="process">Process</span>
+        </h2>
+        
+        <div class="process-container">
+            <p class="process-intro" 
+               data-en="This is the design process I typically follow. The Design Thinking Process framework is an agile and iterative framework that allows me to gain a deeper understanding of the customer's perspective, needs, and pain points before delving into finding design solutions. Sometimes some of the steps go together, other times I incorporate this into the Scrum framework when working in larger development teams."
+               data-sv="Detta är designprocessen jag vanligtvis följer. Design Thinking Process-ramverket är ett agilt och iterativt ramverk som gör att jag kan få en djupare förståelse av kundens perspektiv, behov och smärtpunkter innan jag fördjupar mig i att hitta designlösningar. Ibland går vissa av stegen tillsammans, andra gånger integrerar jag detta i Scrum-ramverket när jag arbetar i större utvecklingsteam.">
+                This is the design process I typically follow. The Design Thinking Process framework is an agile and iterative framework that allows me to gain a deeper understanding of the customer's perspective, needs, and pain points before delving into finding design solutions. Sometimes some of the steps go together, other times I incorporate this into the Scrum framework when working in larger development teams.
+            </p>
+
+            <div class="process-flow">
+                <!-- Empathize -->
+                <div class="process-phase-wrapper">
+                    <div class="process-phase" onclick="openMethodModal(currentLang === 'en' ? 'empathize' : 'empatisera')">
+                        <div class="phase-icon-wrapper">
+                            <img src="uploads/icon_empathize.svg" alt="Empathize">
+                        </div>
+                        <h3 class="phase-title" data-en="Empathize" data-sv="Empatisera">Empathize</h3>
+                        <p class="phase-subtitle" 
+                           data-en="Understand the user's needs, feelings and behaviors by listening, observing and putting yourself in their perspective."
+                           data-sv="Förstå användarens behov, känslor och beteenden genom att lyssna, observera och sätta dig in i deras perspektiv.">
+                            Understand the user's needs, feelings and behaviors by listening, observing and putting yourself in their perspective.
+                        </p>
+                    </div>
+                    <div class="flow-arrow">
+                        <svg viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 20 L100 20" stroke="#F0961E" stroke-width="3"/>
+                            <path d="M95 13 L105 20 L95 27" fill="#F0961E"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Define -->
+                <div class="process-phase-wrapper">
+                    <div class="process-phase" onclick="openMethodModal(currentLang === 'en' ? 'define' : 'definiera')">
+                        <div class="phase-icon-wrapper">
+                            <img src="uploads/icon_define.svg" alt="Define">
+                        </div>
+                        <h3 class="phase-title" data-en="Define" data-sv="Definiera">Define</h3>
+                        <p class="phase-subtitle"
+                           data-en="Summarize the insights from the empathy phase and formulate a clear problem definition that focuses on the user's real challenges."
+                           data-sv="Sammanfatta insikterna från empatifasen och formulera en tydlig problemdefinition som fokuserar på användarens verkliga utmaningar.">
+                            Summarize the insights from the empathy phase and formulate a clear problem definition that focuses on the user's real challenges.
+                        </p>
+                    </div>
+                    <div class="flow-arrow">
+                        <svg viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 20 L100 20" stroke="#F0961E" stroke-width="3"/>
+                            <path d="M95 13 L105 20 L95 27" fill="#F0961E"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Ideate -->
+                <div class="process-phase-wrapper">
+                    <div class="process-phase" onclick="openMethodModal(currentLang === 'en' ? 'ideate' : 'idégenerering')">
+                        <div class="phase-icon-wrapper">
+                            <img src="uploads/icon_ideate.svg" alt="Ideate">
+                        </div>
+                        <h3 class="phase-title" data-en="Ideation" data-sv="Idégenerering">Ideation</h3>
+                        <p class="phase-subtitle"
+                           data-en="Explore creative solutions through brainstorming and other techniques – there are no bad ideas here!"
+                           data-sv="Utforska kreativa lösningar genom brainstorming och andra tekniker – här finns inga dåliga idéer!">
+                            Explore creative solutions through brainstorming and other techniques – there are no bad ideas here!
+                        </p>
+                    </div>
+                    <div class="flow-arrow">
+                        <svg viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 20 L100 20" stroke="#F0961E" stroke-width="3"/>
+                            <path d="M95 13 L105 20 L95 27" fill="#F0961E"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Prototype -->
+                <div class="process-phase-wrapper">
+                    <div class="process-phase" onclick="openMethodModal(currentLang === 'en' ? 'prototype' : 'prototypa')">
+                        <div class="phase-icon-wrapper">
+                            <img src="uploads/icon_prototype.svg" alt="Prototype">
+                        </div>
+                        <h3 class="phase-title" data-en="Prototype" data-sv="Prototypa">Prototype</h3>
+                        <p class="phase-subtitle"
+                           data-en="Make simple and quick prototypes to visualize ideas and start shaping concrete solutions."
+                           data-sv="Gör enkla och snabba prototyper för att visualisera idéer och börja forma konkreta lösningar.">
+                            Make simple and quick prototypes to visualize ideas and start shaping concrete solutions.
+                        </p>
+                    </div>
+                    <div class="flow-arrow">
+                        <svg viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 20 L100 20" stroke="#F0961E" stroke-width="3"/>
+                            <path d="M95 13 L105 20 L95 27" fill="#F0961E"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Validate -->
+                <div class="process-phase-wrapper">
+                    <div class="process-phase" onclick="openMethodModal(currentLang === 'en' ? 'validate' : 'validera')">
+                        <div class="phase-icon-wrapper">
+                            <img src="uploads/icon_test.svg" alt="Validate">
+                        </div>
+                        <h3 class="phase-title" data-en="Validate" data-sv="Validera">Validate</h3>
+                        <p class="phase-subtitle"
+                           data-en="Test the prototypes with real users to get feedback, learn what works – and what can be improved."
+                           data-sv="Testa prototyperna med riktiga användare för att få feedback, lära dig vad som fungerar – och vad som kan förbättras.">
+                            Test the prototypes with real users to get feedback, learn what works – and what can be improved.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Method Modal -->
+    <div class="method-modal" id="methodModal" onclick="closeMethodModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-close" onclick="closeMethodModal()">&times;</div>
+            <div class="modal-header">
+                <div class="modal-icon" id="modalIcon">
+                    <img src="" alt="Phase Icon" id="modalIconImg">
+                </div>
+                <div class="modal-title-group">
+                    <h3 id="modalTitle"></h3>
+                    <p id="modalSubtitle"></p>
+                </div>
+            </div>
+            <div class="modal-scroll">
+                <div class="modal-body" id="modalBody">
+                    <!-- Methods will be populated here -->
+                </div>    
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Projects Section -->
+    <section class="projects-section">
+        <h2 class="section-title">
+            <span data-en="Featured" data-sv="Utvalda">Featured</span>
+            <span class="accent" data-en="Projects" data-sv="projekt">Projects</span>
+        </h2>
+
+        <div class="projects-scroll-container">
+            <div class="projects-grid">
+                <!-- Smart Dispenser Project -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="uploads/Smart_Dispenser.svg" alt="Smart Dispenser">
+                    </div>
+                    <div class="project-content">
+                        <p class="project-subtitle" data-en="Concept to Physical & Digital Product" data-sv="Koncept till fysisk- och digitalprodukt">Concept to Physical & Digital Product</p>
+                        <h3 class="project-title">Smart Dispenser</h3>
+                        <p class="project-description" 
+                           data-en="Led the complete design journey of an innovative smart dispenser system for the hygiene industry. Transformed an existing consumable product into an IoT-connected solution with both physical hardware and digital portal. Designed sustainable features including carbon footprint tracking through custom data visualizations, helping users understand their environmental impact."
+                           data-sv="Ledde den kompletta designresan för ett innovativt smart dispenser-system för hygienindustrin. Förvandlade en befintlig förbrukningsvara till en IoT-ansluten lösning med både fysisk hårdvara och digital portal. Designade hållbarhetsfunktioner inklusive koldioxidavtrycksspårning genom skräddarsydda datavisualiseringar.">
+                            Led the complete design journey of an innovative smart dispenser system for the hygiene industry. Transformed an existing consumable product into an IoT-connected solution with both physical hardware and digital portal. Designed sustainable features including carbon footprint tracking through custom data visualizations, helping users understand their environmental impact.
+                        </p>
+                        <div class="project-highlights">
+                            <p class="highlight-title" data-en="Key Contributions" data-sv="Nyckelinsatser">Key Contributions</p>
+                            <div class="highlight-items">
+                                <span class="highlight-tag">Product Design</span>
+                                <span class="highlight-tag">3D CAD Modeling</span>
+                                <span class="highlight-tag">IoT Integration</span>
+                                <span class="highlight-tag">Data Visualization</span>
+                                <span class="highlight-tag">Project Management</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Workforce Portal Project -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="uploads/Portal_workforce.svg" alt="Workforce Portal">
+                    </div>
+                    <div class="project-content">
+                        <p class="project-subtitle" data-en="Concept to Digital Product" data-sv="Koncept till digitalprodukt">Concept to Digital Product</p>
+                        <h3 class="project-title" data-en="Workforce Portal" data-sv="Portal för arbetskraften">Workforce Portal</h3>
+                        <p class="project-description"
+                           data-en="Designed a comprehensive web platform addressing workforce management gaps in the construction industry. Created sophisticated data visualizations and filtering systems to help companies make informed decisions about diverse workforce capabilities and availability. Developed intuitive interfaces for complex personnel data, accessibility information, and qualification tracking."
+                           data-sv="Designade en omfattande webbplattform som tar itu med brister i arbetskraftshantering inom byggbranschen. Skapade sofistikerade datavisualiseringar och filtreringssystem för att hjälpa företag fatta välgrundade beslut om olika arbetskraftskapaciteter och tillgänglighet.">
+                            Designed a comprehensive web platform addressing workforce management gaps in the construction industry. Created sophisticated data visualizations and filtering systems to help companies make informed decisions about diverse workforce capabilities and availability. Developed intuitive interfaces for complex personnel data, accessibility information, and qualification tracking.
+                        </p>
+                        <div class="project-highlights">
+                            <p class="highlight-title" data-en="Key Contributions" data-sv="Nyckelinsatser">Key Contributions</p>
+                            <div class="highlight-items">
+                                <span class="highlight-tag">Information Architecture</span>
+                                <span class="highlight-tag">Data Visualization</span>
+                                <span class="highlight-tag">Complex Filtering</span>
+                                <span class="highlight-tag">User Research</span>
+                                <span class="highlight-tag">Persona Development</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portal Improvement Project -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="uploads/Portal_improvement.svg" alt="Portal Improvement">
+                    </div>
+                    <div class="project-content">
+                        <p class="project-subtitle" data-en="UX Enhancement & WCAG Compliance" data-sv="UX-förbättring & WCAG-efterlevnad">UX Enhancement & WCAG Compliance</p>
+                        <h3 class="project-title" data-en="Portal Improvement" data-sv="Förbättring av portal">Portal Improvement</h3>
+                        <p class="project-description"
+                           data-en="Conducted comprehensive UX audit and redesign of an existing dashboard portal. Eliminated information redundancy, optimized user flows, and ensured full WCAG accessibility compliance. Enhanced data visualization clarity and improved filtering systems. Created detailed design documentation for development team, establishing design system components and accessibility standards."
+                           data-sv="Genomförde omfattande UX-revision och omdesign av en befintlig dashboard-portal. Eliminerade informationsredundans, optimerade användarflöden och säkerställde full WCAG-tillgänglighetskompabilitet. Förbättrade tydligheten i datavisualiseringar och förbättrade filtreringssystem.">
+                            Conducted comprehensive UX audit and redesign of an existing dashboard portal. Eliminated information redundancy, optimized user flows, and ensured full WCAG accessibility compliance. Enhanced data visualization clarity and improved filtering systems. Created detailed design documentation for development team, establishing design system components and accessibility standards.
+                        </p>
+                        <div class="project-highlights">
+                            <p class="highlight-title" data-en="Key Contributions" data-sv="Nyckelinsatser">Key Contributions</p>
+                            <div class="highlight-items">
+                                <span class="highlight-tag">UX Audit</span>
+                                <span class="highlight-tag">WCAG Compliance</span>
+                                <span class="highlight-tag">Flow Optimization</span>
+                                <span class="highlight-tag">Design System</span>
+                                <span class="highlight-tag">Accessibility</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vehicle Overview Project -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="uploads/Vehicle_overview.svg" alt="Vehicle Overview">
+                    </div>
+                    <div class="project-content">
+                        <p class="project-subtitle" data-en="Design Systems & Data Visualization" data-sv="Designsystem & datavisualisering">Design Systems & Data Visualization</p>
+                        <h3 class="project-title" data-en="Vehicle Overview" data-sv="Fordonsöversikt">Vehicle Overview</h3>
+                        <p class="project-description"
+                           data-en="Designed a specialized dashboard portal for monitoring electric vehicle fleets nationwide, focusing on vehicle status and health metrics. Created a custom design system reflecting the brand theme and developed sophisticated data visualizations for complex vehicle data. Designed intuitive interfaces for real-time monitoring, health diagnostics, and predictive maintenance insights."
+                           data-sv="Designade en specialiserad dashboard-portal för övervakning av elektriska fordonsflottor nationellt, med fokus på fordonsstatus och hälsomätningar. Skapade ett anpassat designsystem som speglar varumärkestemat och utvecklade sofistikerade datavisualiseringar för komplex fordonsdata.">
+                            Designed a specialized dashboard portal for monitoring electric vehicle fleets nationwide, focusing on vehicle status and health metrics. Created a custom design system reflecting the brand theme and developed sophisticated data visualizations for complex vehicle data. Designed intuitive interfaces for real-time monitoring, health diagnostics, and predictive maintenance insights.
+                        </p>
+                        <div class="project-highlights">
+                            <p class="highlight-title" data-en="Key Contributions" data-sv="Nyckelinsatser">Key Contributions</p>
+                            <div class="highlight-items">
+                                <span class="highlight-tag">Custom Design System</span>
+                                <span class="highlight-tag">Data Visualization</span>
+                                <span class="highlight-tag">Real-time Monitoring</span>
+                                <span class="highlight-tag">UI Components</span>
+                                <span class="highlight-tag">Dashboard Design</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills-section">
+        <h2 class="section-title">
+            <span data-en="Skills &" data-sv="Kompetenser &">Skills &</span>
+            <span class="accent" data-en="Tools" data-sv="verktyg">Tools</span>
+        </h2>
+
+        <div class="skills-container">
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3 data-en="Design Tools" data-sv="Designverktyg">Design Tools</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Figma</span>
+                        <span class="skill-tag">Blender</span>
+                        <span class="skill-tag">Adobe Creative Suite</span>
+                        <span class="skill-tag">Sketch</span>
+                        <span class="skill-tag">InVision</span>
+                        <span class="skill-tag">Canva</span>
+                        <span class="skill-tag">Affinity</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 data-en="UX Methods" data-sv="UX-metoder">UX Methods</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">User Research</span>
+                        <span class="skill-tag">Usability Testing</span>
+                        <span class="skill-tag">Personas</span>
+                        <span class="skill-tag">User Journeys</span>
+                        <span class="skill-tag">Wireframing</span>
+                        <span class="skill-tag">Prototyping</span>
+                        <span class="skill-tag">A/B Testing</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 data-en="Development" data-sv="Utveckling">Development</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Object Oriented Programming</span>
+                        <span class="skill-tag">Git</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 data-en="Specializations" data-sv="Specialiseringar">Specializations</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Data Visualization</span>
+                        <span class="skill-tag">Design Systems</span>
+                        <span class="skill-tag">WCAG Compliance</span>
+                        <span class="skill-tag">IoT Design</span>
+                        <span class="skill-tag">3D Modeling</span>
+                        <span class="skill-tag">Product Design</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox for Project Images -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="Project Image">
+    </div>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <h2 class="contact-title" data-en="Let's Connect!" data-sv="Hör av dig!">Let's Connect!</h2>
+        <p data-en="Thank you for taking the time to explore my portfolio. I'd love to hear from you!"
+           data-sv="Tack för att du tog dig tid att titta igenom min portfolio – hör gärna av dig om du vill veta mer!">
+            Thank you for taking the time to explore my portfolio. I'd love to hear from you!
+        </p>
+        <div class="contact-info">
+            <div class="contact-item">
+                <span>📧</span>
+                <a style="color: #F0961E;" href="mailto:rithika.agren@gmail.com">rithika.agren@gmail.com</a>
+            </div>
+            <div class="contact-item">
+                <span>📱</span>
+                <a style="color: #F0961E;" href="tel:+46706824569">+46 706 824 569</a>
+            </div>
+        </div>
+    </section>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Loading Screen
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loading').classList.add('fade-out');
+            }, 500);
+        });
+
+        // Language Toggle
+        const langButtons = document.querySelectorAll('.lang-btn');
+        let currentLang = 'en';
+
+        langButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.getAttribute('data-lang');
+                if (lang !== currentLang) {
+                    currentLang = lang;
+                    langButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    updateLanguage(lang);
+                }
+            });
+        });
+
+        function updateLanguage(lang) {
+            document.querySelectorAll('[data-en][data-sv]').forEach(el => {
+                const text = el.getAttribute(`data-${lang}`);
+                if (text) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.placeholder = text;
+                    } else {
+                        el.textContent = text;
+                    }
+                }
+            });
+        }
+
+        // Method Modal System
+        const methodDefinitions = {
+            empathize: {
+                title: "Empathize",
+                subtitle: "Understand the user's needs, feelings and behaviors by listening, observing and putting yourself in their perspective.",
+                icon: "uploads/icon_empathize.svg",
+                methods: {
+                    "User Interviews": "One-on-one conversations with users to understand their needs, motivations, and pain points. Example: Interviewing 10 nurses about their hospital software to identify workflow bottlenecks.",
+                    "Stakeholder Interviews": "Discussions with business stakeholders to align on goals, constraints, and success metrics. Example: Meeting with hospital administrators to understand budget and compliance requirements.",
+                    "Benchmarking": "Analyzing competitor products and industry standards to identify best practices and opportunities. Example: Reviewing top 5 healthcare apps to understand standard features.",
+                    "Focus Groups": "Group discussions with 6-10 users to gather diverse perspectives and generate ideas. Example: Workshop with doctors discussing ideal features for a patient management system.",
+                    "Observation": "Watching users in their natural environment to understand actual behavior vs. reported behavior. Example: Shadowing emergency room staff to see how they use current tools during shifts.",
+                    "Customer Journey Mapping": "Visualizing the user's experience across all touchpoints to identify pain points and opportunities. Example: Mapping a patient's journey from scheduling to follow-up appointments.",
+                    "Clustering Insights": "Grouping research findings into themes to identify patterns. Example: Organizing 50+ user pain points into 5 key problem areas.",
+                    "Surveys": "Collecting quantitative data from large user groups to validate assumptions and measure sentiment. Example: Surveying 500 patients about their online booking experience.",
+                    "Data Analysis": "Examining usage data, analytics, and metrics to identify patterns and user behaviors. Example: Analyzing app analytics to see where users drop off during onboarding."
+                }
+            },
+            define: {
+                title: "Define",
+                subtitle: "Summarize the insights from the empathy phase and formulate a clear problem definition that focuses on the user's real challenges.",
+                icon: "uploads/icon_define.svg",
+                methods: {
+                    "Personas": "Fictional characters representing key user segments based on research data. Example: 'Sarah, 35, busy working mom who values quick grocery delivery and healthy options.'",
+                    "Affinity Diagrams": "Grouping research insights into themes to identify patterns and prioritize issues. Example: Organizing 100+ sticky notes from interviews into 5 key problem areas.",
+                    "User Journeys": "Detailed maps showing user's thoughts, emotions, and actions through a process. Example: Documenting a user's frustration when trying to reset their password.",
+                    "User Stories": "Short descriptions of features from the user's perspective. Example: 'As a teacher, I want to grade assignments offline so I can work during my commute.'",
+                    "Storyboarding": "Visual sequences illustrating how users will interact with your solution. Example: Comic-style panels showing a user ordering food through an app.",
+                    "Task Analysis": "Breaking down user tasks into steps to optimize workflows. Example: Analyzing the 12 steps currently needed to submit an expense report, identifying redundancies.",
+                    "Information Architecture": "Organizing and structuring content for findability and usability. Example: Creating a sitemap showing how 200 help articles are categorized and linked.",
+                    "MoSCoW Method": "Prioritizing features into Must-have, Should-have, Could-have, and Won't-have categories. Example: Deciding payment processing is Must-have, but dark mode is Could-have."
+                }
+            },
+            ideate: {
+                title: "Ideation",
+                subtitle: "Explore creative solutions through brainstorming and other techniques – there are no bad ideas here!",
+                icon: "uploads/icon_ideate.svg",
+                methods: {
+                    "Brainstorming": "Generating many ideas quickly without judgment to explore possibilities. Example: Team generating 50 ways to simplify checkout in 20 minutes.",
+                    "Mind Maps": "Visual diagrams connecting ideas around a central concept to explore relationships. Example: Mapping all possible features branching from 'mobile banking app.'",
+                    "Storyboarding": "Sketching scenarios showing how users achieve goals with your solution. Example: Drawing frames showing a user discovering and using a new feature.",
+                    "Affinity Diagrams": "Organizing brainstormed ideas into themes to identify patterns and opportunities. Example: Grouping 80 feature ideas into 6 strategic themes.",
+                    "User Flows": "Diagrams showing paths users take to complete tasks. Example: Flowchart showing all decision points from landing page to completed purchase.",
+                    "User Journeys": "Mapping complete user experiences including emotions and touchpoints. Example: Charting a customer's feelings from product discovery to post-purchase support.",
+                    "Crazy 8's": "Rapid sketching exercise: 8 different ideas in 8 minutes. Example: Drawing 8 different layouts for a dashboard in quick succession.",
+                    "Service Blueprints": "Detailed maps showing frontstage user experience and backstage processes. Example: Mapping how a food delivery order flows from app tap to doorstep.",
+                    "Information Architecture": "Structuring content and features for optimal navigation. Example: Designing menu structure for an app with 50+ features across 4 sections."
+                }
+            },
+            prototype: {
+                title: "Prototype",
+                subtitle: "Make simple and quick prototypes to visualize ideas and start shaping concrete solutions.",
+                icon: "uploads/icon_prototype.svg",
+                methods: {
+                    "Paper Prototypes": "Hand-drawn sketches on paper for quick, cheap testing of concepts. Example: Drawing rough screens on paper to test navigation flow with 5 users.",
+                    "Low-fidelity Prototypes": "Simple digital wireframes focusing on structure without visual design. Example: Gray-box wireframes in Figma showing layout without colors or images.",
+                    "High-fidelity Prototypes": "Detailed, interactive designs that look and feel like the final product. Example: Clickable Figma prototype with real content, animations, and branding.",
+                    "Mockups": "Static visual designs showing exactly how the interface will look. Example: Pixel-perfect screens showing colors, typography, spacing, and images.",
+                    "Wireframes": "Blueprints showing content placement and functionality without detailed design. Example: Sketching where buttons, text, and images go on each screen.",
+                    "Design Documentation": "Detailed specs and guidelines for developers to build your designs. Example: Document specifying all component variants, spacing rules, and interaction patterns."
+                }
+            },
+            validate: {
+                title: "Validate",
+                subtitle: "Test the prototypes with real users to get feedback, learn what works – and what can be improved.",
+                icon: "uploads/icon_test.svg",
+                methods: {
+                    "Usability Testing": "Watching users attempt tasks to identify confusion and friction. Example: Observing 8 users trying to complete checkout, noting where they hesitate or fail.",
+                    "A/B Testing": "Comparing two versions to see which performs better with real users. Example: Testing green vs. blue CTA button to see which gets more clicks.",
+                    "Heuristic Evaluation": "Expert review against established usability principles. Example: UX expert checking if design follows Nielsen's 10 usability heuristics.",
+                    "Desirability Evaluations": "Testing emotional response using word choice exercises. Example: Users selecting adjectives that describe their feeling about your design.",
+                    "MoSCoW Method": "Re-evaluating priorities based on test results and feedback. Example: Moving a confusing feature from Must-have to Could-have after testing.",
+                    "Shadowing": "Observing users in their environment using your product. Example: Watching warehouse workers use your inventory app during their actual shift.",
+                    "Observations": "Documenting user behavior patterns during testing sessions. Example: Noting that 7 out of 10 users scroll past the main CTA.",
+                    "Eye Tracking": "Measuring where users look to understand attention and information hierarchy. Example: Heat maps showing users miss important warnings on a form.",
+                    "Think-Out-Loud Testing": "Users narrate thoughts while using your product. Example: User says 'I'm looking for settings but can't find them' revealing navigation issues."
+                }
+            },
+            empatisera: {
+                title: "Empatisera",
+                subtitle: "Förstå användarens behov, känslor och beteenden genom att lyssna, observera och sätta dig in i deras perspektiv.",
+                icon: "uploads/icon_empathize.svg",
+                methods: {
+                    "User Interviews": "Enskilda samtal med användare för att förstå deras behov, motivationer och smärtpunkter. Exempel: Intervjua 10 sjuksköterskor om deras sjukhusprogramvara för att identifiera flaskhalsar i arbetsflödet.",
+                    "Stakeholder Interviews": "Samtal med affärsintressenter för att skapa samsyn kring mål, begränsningar och framgångsmått. Exempel: Möte med sjukhusadministratörer för att förstå budget- och regelefterlevnadskrav.",
+                    "Benchmarking": "Analys av konkurrentprodukter och branschstandarder för att identifiera bästa praxis och möjligheter. Exempel: Gå igenom de 5 främsta vårdapparna för att förstå standardfunktioner.",
+                    "Focus Groups": "Gruppsamtal med 6–10 användare för att samla olika perspektiv och generera idéer. Exempel: Workshop med läkare som diskuterar önskade funktioner för ett patienthanteringssystem.",
+                    "Observation": "Att observera användare i deras naturliga miljö för att förstå verkligt beteende kontra rapporterat beteende. Exempel: Skugga akutpersonal för att se hur de använder nuvarande verktyg under sina arbetspass.",
+                    "Customer Journey Mapping": "Visualisering av användarens upplevelse genom alla kontaktpunkter för att identifiera smärtpunkter och möjligheter. Exempel: Kartlägga en patients resa från bokning till återbesök.",
+                    "Clustering Insights": "Att gruppera forskningsresultat i teman för att identifiera mönster. Exempel: Organisera 50+ användarsmärtpunkter i 5 huvudsakliga problemområden.",
+                    "Surveys": "Insamling av kvantitativa data från stora användargrupper för att validera antaganden och mäta känslor. Exempel: Undersöka 500 patienter om deras upplevelse av onlinebokning.",
+                    "Data Analysis": "Analys av användningsdata, statistik och mätvärden för att identifiera mönster och beteenden. Exempel: Analysera appdata för att se var användare faller bort under onboarding."
+                }
+            },
+            definiera: {
+                title: "Definiera",
+                subtitle: "Sammanfatta insikterna från empatifasen och formulera en tydlig problemdefinition som fokuserar på användarens verkliga utmaningar.",
+                icon: "uploads/icon_define.svg",
+                methods: {
+                    "Personas": "Fiktiva karaktärer som representerar viktiga användarsegment baserat på forskningsdata. Exempel: 'Sarah, 35, upptagen arbetande mamma som värdesätter snabb matleverans och hälsosamma alternativ.'",
+                    "Affinity Diagrams": "Gruppering av forskningsinsikter i teman för att identifiera mönster och prioritera problem. Exempel: Organisera 100+ post-its från intervjuer i 5 huvudsakliga problemområden.",
+                    "User Journeys": "Detaljerade kartor över användarens tankar, känslor och handlingar genom en process. Exempel: Dokumentera en användares frustration när de försöker återställa sitt lösenord.",
+                    "User Stories": "Korta beskrivningar av funktioner ur användarens perspektiv. Exempel: 'Som lärare vill jag kunna rätta uppgifter offline så att jag kan arbeta under pendlingen.'",
+                    "Storyboarding": "Visuella sekvenser som visar hur användare interagerar med din lösning. Exempel: Seriepaneler som visar en användare beställa mat genom en app.",
+                    "Task Analysis": "Nedbrytning av användaruppgifter i steg för att optimera arbetsflöden. Exempel: Analysera de 12 steg som krävs för att skicka in en utgiftsrapport och identifiera överflödiga moment.",
+                    "Information Architecture": "Organisering och strukturering av innehåll för att förbättra sökbarhet och användbarhet. Exempel: Skapa en sitemap som visar hur 200 hjälpartiklar kategoriseras och länkas.",
+                    "MoSCoW Method": "Prioritering av funktioner i Must-have, Should-have, Could-have och Won’t-have. Exempel: Avgöra att betalningshantering är Must-have, medan mörkt läge är Could-have."
+                }
+            },
+            idégenerering: {
+                title: "Idégenerering",
+                subtitle: "Utforska kreativa lösningar genom brainstorming och andra tekniker – här finns inga dåliga idéer!",
+                icon: "uploads/icon_ideate.svg",
+                methods: {
+                    "Brainstorming": "Snabb generering av många idéer utan bedömning för att utforska möjligheter. Exempel: Teamet genererar 50 sätt att förenkla utcheckning på 20 minuter.",
+                    "Mind Maps": "Visuella diagram som kopplar samman idéer runt ett centralt koncept för att utforska relationer. Exempel: Skapa en karta över möjliga funktioner som utgår från 'mobil bankapp'.",
+                    "Storyboarding": "Skisser som visar hur användare når sina mål med din lösning. Exempel: Rita rutor som visar en användare upptäcka och använda en ny funktion.",
+                    "Affinity Diagrams": "Organisering av brainstormade idéer i teman för att hitta mönster och möjligheter. Exempel: Gruppera 80 funktionsidéer i 6 strategiska teman.",
+                    "User Flows": "Diagram som visar vilka vägar användare tar för att slutföra uppgifter. Exempel: Flödesschema över beslutspunkter från landningssida till slutfört köp.",
+                    "User Journeys": "Kartläggning av kompletta användarupplevelser inklusive känslor och kontaktpunkter. Exempel: Skildra kundens känslor från upptäckt till efterköpssupport.",
+                    "Crazy 8's": "Snabbskissövning: 8 olika idéer på 8 minuter. Exempel: Rita 8 olika layouter för en instrumentpanel i snabb följd.",
+                    "Service Blueprints": "Detaljerade kartor över användarens upplevelse och interna processer. Exempel: Kartlägga hur en matleveransorder går från knapptryck till dörrleverans.",
+                    "Information Architecture": "Strukturering av innehåll och funktioner för optimal navigation. Exempel: Designa menystrukturen för en app med 50+ funktioner i 4 sektioner."
+                }
+            },
+            prototypa: {
+                title: "Prototypa",
+                subtitle: "Skapa enkla och snabba prototyper för att visualisera idéer och börja forma konkreta lösningar.",
+                icon: "uploads/icon_prototype.svg",
+                methods: {
+                    "Paper Prototypes": "Handritade skisser på papper för snabb och billig testning av koncept. Exempel: Rita grova skärmar på papper för att testa navigationsflödet med 5 användare.",
+                    "Low-fidelity Prototypes": "Enkla digitala wireframes som fokuserar på struktur utan visuellt designarbete. Exempel: Gråbox-wireframes i Figma som visar layout utan färger eller bilder.",
+                    "High-fidelity Prototypes": "Detaljerade, interaktiva designer som liknar den slutliga produkten. Exempel: Klickbar Figma-prototyp med verkligt innehåll, animationer och branding.",
+                    "Mockups": "Statiska visuella designer som visar exakt hur gränssnittet kommer se ut. Exempel: Pixelperfekta skärmar med färger, typografi, mellanrum och bilder.",
+                    "Wireframes": "Blueprints som visar placering av innehåll och funktionalitet utan detaljerad design. Exempel: Skisser över var knappar, text och bilder ska placeras på varje skärm.",
+                    "Design Documentation": "Detaljerade specifikationer och riktlinjer för utvecklare att bygga utifrån. Exempel: Dokument som specificerar alla komponentvarianter, avståndsregler och interaktionsmönster."
+                }
+            },
+            validera: {
+                title: "Validera",
+                subtitle: "Testa prototyperna med riktiga användare för att få feedback, förstå vad som fungerar – och vad som kan förbättras.",
+                icon: "uploads/icon_test.svg",
+                methods: {
+                    "Usability Testing": "Observera användares försök att utföra uppgifter för att identifiera förvirring och friktion. Exempel: Se 8 användare försöka slutföra kassan och notera var de tvekar eller misslyckas.",
+                    "A/B Testing": "Jämföra två versioner för att se vilken som fungerar bättre hos riktiga användare. Exempel: Testa grön vs blå CTA-knapp för att se vilken som får flest klick.",
+                    "Heuristic Evaluation": "Expertgranskning baserat på etablerade användbarhetsprinciper. Exempel: UX-expert som kontrollerar om designen följer Nielsens 10 heuristiker.",
+                    "Desirability Evaluations": "Testa emotionella reaktioner genom ordval och associationsövningar. Exempel: Användare väljer adjektiv som beskriver deras känsla kring designen.",
+                    "MoSCoW Method": "Omprioritering av funktioner baserat på testresultat och feedback. Exempel: Flytta en förvirrande funktion från Must-have till Could-have efter testning.",
+                    "Shadowing": "Observera användare i deras miljö när de använder produkten. Exempel: Titta på lagerarbetare använda inventarieappen under ett riktigt arbetspass.",
+                    "Observations": "Dokumentation av användarbeteenden under testsessioner. Exempel: Notera att 7 av 10 användare scrollar förbi huvud-CTA:n.",
+                    "Eye Tracking": "Mätning av var användare tittar för att förstå uppmärksamhet och informationshierarki. Exempel: Värmekartor som visar att användare missar viktiga varningar i ett formulär.",
+                    "Think-Out-Loud Testing": "Användare berättar sina tankar högt medan de använder produkten. Exempel: Användare säger 'Jag letar efter inställningar men hittar dem inte' och avslöjar navigationsproblem."
+                }
+            }
+        };
+
+        function openMethodModal(phase) {
+            const modal = document.getElementById('methodModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalSubtitle = document.getElementById('modalSubtitle');
+            const modalIconImg = document.getElementById('modalIconImg');
+            const modalBody = document.getElementById('modalBody');
+
+
+
+            const data = methodDefinitions[phase];
+            
+            // Set title and subtitle
+            modalTitle.textContent = data.title;
+            modalSubtitle.textContent = data.subtitle;
+            modalIconImg.src = data.icon;
+            
+            // Build methods list
+            let methodsHTML = '';
+            for (const [methodName, description] of Object.entries(data.methods)) {
+                methodsHTML += `
+                    <div class="method-item">
+                        <h4 class="method-name">${methodName}</h4>
+                        <p class="method-description">${description}</p>
+                    </div>
+                `;
+            }
+            modalBody.innerHTML = methodsHTML;
+            
+            // Show modal
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMethodModal(event) {
+            // Only close if clicking outside the modal content or on close button
+            if (!event || event.target.id === 'methodModal' || event.target.classList.contains('modal-close')) {
+                const modal = document.getElementById('methodModal');
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Download PDF functionality
+        function downloadPDF() {
+            // Determine which PDF to download based on current language
+            const pdfPath = currentLang === 'en' 
+                ? 'uploads/Rithika_Agren_Portfolio.pdf'
+                : 'uploads/Rithika_Agren_portfolj.pdf';
+            
+            const link = document.createElement('a');
+            link.href = pdfPath;
+            link.download = currentLang === 'en' 
+                ? 'Rithika_Agren_Portfolio.pdf'
+                : 'Rithika_Agren_Portfolj.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Smooth scroll for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all project cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Horizontal scroll for projects
+        const projectsContainer = document.querySelector('.projects-scroll-container');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        projectsContainer.addEventListener('mousedown', (e) => {
+            isDown = true;
+            projectsContainer.style.cursor = 'grabbing';
+            startX = e.pageX - projectsContainer.offsetLeft;
+            scrollLeft = projectsContainer.scrollLeft;
+        });
+
+        projectsContainer.addEventListener('mouseleave', () => {
+            isDown = false;
+            projectsContainer.style.cursor = 'grab';
+        });
+
+        projectsContainer.addEventListener('mouseup', () => {
+            isDown = false;
+            projectsContainer.style.cursor = 'grab';
+        });
+
+        projectsContainer.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - projectsContainer.offsetLeft;
+            const walk = (x - startX) * 2;
+            projectsContainer.scrollLeft = scrollLeft - walk;
+        });
+
+        // Lightbox functionality for project images
+        function openLightbox(imageSrc) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = imageSrc;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Add click handlers to project images
+        document.querySelectorAll('.project-image img').forEach(img => {
+            img.addEventListener('click', (e) => {
+                e.stopPropagation();
+                openLightbox(img.src);
+            });
+        });
+
+        // Close on escape key - handles both lightbox and method modal
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                // Check if method modal is open first
+                const methodModal = document.getElementById('methodModal');
+                if (methodModal && methodModal.classList.contains('active')) {
+                    closeMethodModal();
+                } else {
+                    closeLightbox();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
